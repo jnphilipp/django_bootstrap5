@@ -3,7 +3,7 @@
 <th {% if colspan %}colspan="{{ colspan }}"{% endif %} {% if rowspan %}rowspan="{{ rowspan }}"{% endif %} scope="col">
     <a href="{{ link|iriencode }}">{% trans column_name %}</a>
     {% if show_options %}
-        <div class="float-right">
+        <div class="float-end">
             <a href="{{ link|iriencode }}"><span class="sort-{{ sort_icon }}"></span></a>
             <a href="{{ remove_link|iriencode }}"><span class="sort-remove"></span></a>
         </div>

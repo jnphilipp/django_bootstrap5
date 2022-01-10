@@ -1,5 +1,5 @@
 <div>
-    <nav class="float-left">
+    <nav class="float-start">
         <ul class="pagination">
             {% if paginator.num_pages > 1 %}
                 <li class="page-item">
@@ -45,7 +45,7 @@
         </ul>
     </nav>
     {% if title %}
-        <div class="float-left pagination pagination-info">
+        <div class="float-start pagination pagination-info">
             <span class="text-muted">{{ page.start_index }} - {{ page.end_index }} / {{ paginator.count }} {{ title }}</span>
         </div>
     {% endif %}
