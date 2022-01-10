@@ -1,0 +1,40 @@
+a:active {
+    position: relative;
+    top: 1px;
+    right: -1px;
+}
+
+
+
+/*### sortable th ###*/
+
+.sort-down:after {
+    content: "\25BC";
+}
+
+.sort-up:after {
+    content: "\25B2";
+}
+
+.sort-remove:after {
+    content: "x";
+}
+
+
+
+/*### pagination ###*/
+
+.pagination-info {
+    margin-left: 10px;
+    line-height: 33px;
+    vertical-align: text-middle;
+}
+
+
+
+/*### form ###*/
+
+.required:after {
+    content: " *";
+    color: gray;
+}

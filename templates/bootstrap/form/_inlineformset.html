@@ -1,0 +1,49 @@
+{% load bootstrap %}
+
+<div class="form-group">
+    {{ inlineformset.management_form }}
+
+    <div class="table-responsive">
+        <table class="table table-hover table-striped">
+            {% for iform in inlineformset.forms %}
+                {% if forloop.first %}
+                    <thead>
+                        <tr>
+                            {% for field in iform.visible_fields %}
+                                {% if forloop.last and inlineformset.can_delete %}
+                                    <th><label class="{% if field|substring:'type="checkbox"' or field|substring:'type="radio"' %}form-check-label{% else %}control-label{% endif %}">{{ field.label }}</label></th>
+                                {% else %}
+                                    <th><label class="{% if field|substring:'type="checkbox"' or field|substring:'type="radio"' %}form-check-label{% else %}control-label{% endif %}{% if field.field.required %} required{% endif %}" for="{{ field.auto_id }}">{{ field.label }}</label></th>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                {% endif %}
+                <tr class="formset_row">
+                    {% for field in iform.visible_fields %}
+                        <td>
+                            {% if forloop.first %}
+                                {% for hidden in iform.hidden_fields %}
+                                    {{ hidden }}
+                                {% endfor %}
+                            {% endif %}
+                            {% if field|substring:'type="checkbox"' or field|substring:'type="radio"' %}
+                                {{ field|add_class:"form-check-input" }}
+                            {% elif field|startswith:"<input" or field|startswith:"<textarea" %}
+                                {{ field|append_attr:"autocomplete:off"|add_class:"form-control" }}
+                            {% else %}
+                                {{ field }}
+                            {% endif %}
+                            {% if field.help_text %}<small class="form-text text-muted">{{ field.help_text }}</small>{% endif %}
+                            {% if field.errors %}<small class="form-text text-danger">{{ field.errors }}</small>{% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
+                {% if forloop.last %}
+                    </tbody>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+</div>

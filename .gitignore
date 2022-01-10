@@ -1,0 +1,8 @@
+# Python
+__pycache__
+*.pyc
+.venv/*
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
