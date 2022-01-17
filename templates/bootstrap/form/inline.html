@@ -2,18 +2,19 @@
 
 
 {{ form.media }}
-<form {% if form_id %}id="{{ form_id }}"{% endif %} action="{{ url }}" method="{{ method }}" class="form-inline" {% if enctype %}enctype="{{ enctype }}"{% endif %}>
+<form {% if form_id %}id="{{ form_id }}"{% endif %} action="{{ url }}" method="{{ method }}" class="row row-cols-auto align-items-center" {% if enctype %}enctype="{{ enctype }}"{% endif %}>
     {% if csrf %}{% csrf_token %}{% endif %}
     {% for field in form.hidden_fields %}
         {{ field }}
     {% endfor %}
     {% for field in form.visible_fields %}
         <div class="form-group mb-2 mr-sm-2{% if form.errors %} {{ field.errors|yesno:'has-error,has-success' }}{% endif %}">
-            {% if labels|default_if_none:True %}
-                <label class="{% if field|substring:'type="checkbox"' or field|substring:'type="radio"' %}form-check-label{% else %}control-label{% endif %}{% if field.field.required %} required{% endif %}" for="{{ field.auto_id }}">{{ field.label }}:</label>
+            {% if labels|default_if_none:True and not field|substring:'type="checkbox"' and not field|substring:'type="radio"' %}
+                <label class="visually-hidden{% if field.field.required %} required{% endif %}" for="{{ field.auto_id }}">{{ field.label }}:</label>
             {% endif %}
             {% if field|substring:'type="checkbox"' or field|substring:'type="radio"' %}
                     {{ field|add_class:"form-check-input" }}
+                    <label class="form-check-label{% if field.field.required %} required{% endif %}" for="{{ field.auto_id }}">{{ field.label }}:</label>
             {% elif field|startswith:"<input" or field|startswith:"<textarea" %}
                 {{ field|append_attr:"autocomplete:off"|add_class:"form-control" }}
             {% else %}

@@ -8,9 +8,9 @@
         {{ field }}
     {% endfor %}
     {% for field in form.visible_fields %}
-        <div class="form-group row{% if form.errors %} {{ field.errors|yesno:"has-error,has-success" }}{% endif %}">
+        <div class="row{% if form.errors %} {{ field.errors|yesno:"has-error,has-success" }}{% endif %}">
             {% if labels|default_if_none:True %}
-                <label class="col-sm-3 {% if field|substring:'type="checkbox"' or field|substring:'type="radio"' %}form-check-label{% else %}control-label{% endif %}{% if field.field.required %} required{% endif %}" for="{{ field.auto_id }}">{{ field.label }}:</label>
+                <label class="col-sm-3 {% if field|substring:'type="checkbox"' or field|substring:'type="radio"' %}form-check-label{% else %}col-form-label{% endif %}{% if field.field.required %} required{% endif %}" for="{{ field.auto_id }}">{{ field.label }}:</label>
             {% endif %}
             <div class="col-sm-9">
                 {% if field|substring:'type="checkbox"' or field|substring:'type="radio"' %}
@@ -31,7 +31,7 @@
     {% endif %}
 
     {% if submit|default_if_none:True %}
-        <div class="form-group row">
+        <div class="row">
             <div class="offset-sm-3 col-sm-9">
                 <button class="btn btn-primary" type="submit">
                     {% if submit_icon %}<span class="{{ submit_icon }}"></span>{% endif %}

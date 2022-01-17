@@ -7,13 +7,3 @@
 {% elif type == "vertical" %}
     {% include "bootstrap/form/vertical.html" %}
 {% endif %}
-{% if inlineformset %}
-    <script type="text/javascript" src="{% static "js/jquery.formset.js" %}"></script>
-    <script type="text/javascript">
-        $(".formset_row").formset({
-            addText: "{% trans "Add another" %}",
-            deleteText: "{% trans "Remove" %}",
-            prefix: "{{ inlineformset.prefix }}"
-        });
-    </script>
-{% endif %}
