@@ -1,6 +1,6 @@
 # django bootstrap5 app
 
-![Tests](https://github.com/jnphilipp/django_bootstrap5/actions/workflows/tests.yml/badge.svg)
+![Linting & Tests](https://github.com/jnphilipp/django_bootstrap5/actions/workflows/tests.yml/badge.svg)
 
 ## Included versions
 
