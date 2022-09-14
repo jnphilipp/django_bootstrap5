@@ -16,7 +16,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with django_bootstrap5. If not, see <http://www.gnu.org/licenses/>.
-"""Django Bootstrap 6 app."""
+"""Django Bootstrap 5 app."""
 
 default_app_config = "django_bootstrap5.apps.DjangoBootstrap5Config"
 

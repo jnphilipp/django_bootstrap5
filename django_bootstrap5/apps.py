@@ -16,12 +16,15 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with django_bootstrap5. If not, see <http://www.gnu.org/licenses/>.
-"""DjangoBootstrap5 app."""
+"""Django Bootstrap 5 app."""
 
 from django.apps import AppConfig
+from django.utils.translation import gettext_lazy as _
 
 
 class DjangoBootstrap5Config(AppConfig):
-    """DjangoBootstrap5 app config."""
+    """Django Bootstrap 5 app config."""
 
     name = "django_bootstrap5"
+    verbose_name = _("Bootstrap 5")
+    verbose_name_plural = _("Bootstrap 5")
