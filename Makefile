@@ -25,32 +25,32 @@ print-%:
 
 
 deb: build/package/DEBIAN/control
-	$(Q)fakeroot dpkg-deb -b build/package build/python-django_bootstrap5.deb
-	$(Q)lintian -Ivi --suppress-tags embedded-javascript-library,font-outside-font-dir,font-in-non-font-package build/python-django_bootstrap5.deb
-	@echo "python-django_bootstrap5.deb completed."
+	$(Q)fakeroot dpkg-deb -b build/package build/python-django-bootstrap5.deb
+	$(Q)lintian -Ivi --suppress-tags embedded-javascript-library,font-outside-font-dir,font-in-non-font-package build/python-django-bootstrap5.deb
+	@echo "python-django-bootstrap5.deb completed."
 
 
 deb-sig: deb
-	$(Q)dpkg-sig -s builder build/python-django_bootstrap5.deb
-	@echo "Signed python-django_bootstrap5.deb."
+	$(Q)dpkg-sig -s builder build/python-django-bootstrap5.deb
+	@echo "Signed python-django-bootstrap5.deb."
 
 
 install: build/copyright build/changelog.Debian.gz build/package/DEBIAN
 	$(Q)python setup.py build
 	$(Q)python setup.py install --root="${DEST_DIR}/" --optimize=1 --skip-build
 
-	$(Q)install -Dm 0644 build/changelog.Debian.gz "${DEST_DIR}${DOC_DIR}"/python-django_bootstrap5/changelog.Debian.gz
-	$(Q)install -Dm 0644 build/copyright "${DEST_DIR}${DOC_DIR}"/python-django_bootstrap5/copyright
+	$(Q)install -Dm 0644 build/changelog.Debian.gz "${DEST_DIR}${DOC_DIR}"/python-django-bootstrap5/changelog.Debian.gz
+	$(Q)install -Dm 0644 build/copyright "${DEST_DIR}${DOC_DIR}"/python-django-bootstrap5/copyright
 
-	@echo "python-django_bootstrap5 install completed."
+	@echo "python-django-bootstrap5 install completed."
 
 
 uninstall:
 	$(Q)python setup.py build
 	$(Q)python setup.py install --root="build/tmp/" --optimize=1 --skip-build --record build/files.txt
 	$(Q)xargs rm -r < build/files.txt
-	$(Q)rm -r "${DEST_DIR}${DOC_DIR}"/python-django_bootstrap5
-	@echo "python-django_bootstrap5 uninstall completed."
+	$(Q)rm -r "${DEST_DIR}${DOC_DIR}"/python-django-bootstrap5
+	@echo "python-django-bootstrap5 uninstall completed."
 
 
 build:
@@ -135,7 +135,7 @@ build/package/DEBIAN/md5sums:
 
 
 build/package/DEBIAN/control: build/package/DEBIAN/md5sums
-	$(Q)echo "Package: python-django_bootstrap5" > build/package/DEBIAN/control
+	$(Q)echo "Package: python-django-bootstrap5" > build/package/DEBIAN/control
 	$(Q)echo "Version: `git describe --tags`-`git log --format=%h -1`" >> build/package/DEBIAN/control
 	$(Q)echo "Section: python" >> build/package/DEBIAN/control
 	$(Q)echo "Priority: optional" >> build/package/DEBIAN/control
