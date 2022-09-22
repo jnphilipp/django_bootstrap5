@@ -24,18 +24,7 @@ print-%:
 	@echo $*=$($*)
 
 
-deb: build/package/DEBIAN/control
-	$(Q)fakeroot dpkg-deb -b build/package build/python-django-bootstrap5.deb
-	$(Q)lintian -Ivi --suppress-tags embedded-javascript-library,font-outside-font-dir,font-in-non-font-package build/python-django-bootstrap5.deb
-	@echo "python-django-bootstrap5.deb completed."
-
-
-deb-sig: deb
-	$(Q)dpkg-sig -s builder build/python-django-bootstrap5.deb
-	@echo "Signed python-django-bootstrap5.deb."
-
-
-install: build/copyright build/changelog.Debian.gz build/package/DEBIAN
+install: build/copyright build/changelog.Debian.gz
 	$(Q)python setup.py build
 	$(Q)python setup.py install --root="${DEST_DIR}/" --optimize=1 --skip-build
 
@@ -55,10 +44,6 @@ uninstall:
 
 build:
 	$(Q)mkdir -p build
-
-
-build/package/DEBIAN: build
-	@mkdir -p build/package/DEBIAN
 
 
 build/copyright: build
@@ -124,25 +109,3 @@ changelog.latest.md:
 			fi; \
 		done \
 	)
-
-
-build/package/DEBIAN/md5sums:
-	$(Q)make install DEST_DIR=build/package
-	$(Q)mkdir -p build/package/DEBIAN
-	$(Q)find build/package -type f -not -path "*DEBIAN*" -exec md5sum {} \; > build/md5sums
-	$(Q)sed -e "s/build\/package\///" build/md5sums > build/package/DEBIAN/md5sums
-	$(Q)chmod 0644 build/package/DEBIAN/md5sums
-
-
-build/package/DEBIAN/control: build/package/DEBIAN/md5sums
-	$(Q)echo "Package: python-django-bootstrap5" > build/package/DEBIAN/control
-	$(Q)echo "Version: `git describe --tags`-`git log --format=%h -1`" >> build/package/DEBIAN/control
-	$(Q)echo "Section: python" >> build/package/DEBIAN/control
-	$(Q)echo "Priority: optional" >> build/package/DEBIAN/control
-	$(Q)echo "Architecture: all" >> build/package/DEBIAN/control
-	$(Q)echo "Depends: python3 (<< 3.11), python3 (>= 3.7), python3:any" >> build/package/DEBIAN/control
-	$(Q)echo "Installed-Size: `du -sk build/package/usr | grep -oE "[0-9]+"`" >> build/package/DEBIAN/control
-	$(Q)echo "Maintainer: J. Nathanael Philipp (jnphilipp) <nathanael@philipp.land>" >> build/package/DEBIAN/control
-	$(Q)echo "Homepage: https://github.com/jnphilipp/django_bootstrap5" >> build/package/DEBIAN/control
-	$(Q)echo "Description: Bootstrap5 app for Django" >> build/package/DEBIAN/control
-	$(Q)echo " Includes Bootstrap 5.2.1, jQuery 3.6.1, jQuery UI 1.13.2 and select2 4.0.13" >> build/package/DEBIAN/control
