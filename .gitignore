@@ -1,11 +1,14 @@
 # Python
 __pycache__
+dist
+.mypy_cache
+.venv
+*.egg-info
 *.pyc
-.venv/*
 
-# Sublime Text
-*.sublime-workspace
+# SublimeText
 *.sublime-project
+*.sublime-workspace
 
 # Vim
 Session.vim
