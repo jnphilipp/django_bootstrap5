@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=65.5"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "django_bootstrap5"
+version = "0.2.1"
+authors = [
+    {name = "J. Nathanael Philipp", email = "nathanael@philipp.land"}
+]
+description="Add Bootstrap 5 to Django."
+readme = "README.md"
+license = {text = "GPLv3+"}
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Operating System :: OS Independent",
+    "Framework :: Django",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.0",
+    "Framework :: Django :: 4.1",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+keywords = ["django", "bootstrap", "bootstrap 5"]
+
+
+[project.urls]
+"Homepage" = "http://github.com/jnphilipp/django_bootstrap5"
+"Bug Tracker" = "http://github.com/jnphilipp/django_bootstrap5/issues"
