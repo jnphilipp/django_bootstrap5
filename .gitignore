@@ -12,3 +12,7 @@ dist
 
 # Vim
 Session.vim
+
+# Django
+testing
+manage.py
