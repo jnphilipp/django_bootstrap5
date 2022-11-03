@@ -1,0 +1,30 @@
+{% load i18n %}
+
+<script type="text/javascript">
+    $(function() {
+        $("a.iframeFormModal").modal({
+            show: false
+        });
+        $("#iframeFormModal").on("show.bs.modal", function(e) {
+            $("#iframeFormModalLabel").html(e.relatedTarget.title);
+            $("#iframeFormModalIframe").attr("src", e.relatedTarget.href);
+        });
+    });
+</script>
+<div class="modal fade" id="iframeFormModal" tabindex="-1" role="dialog" aria-labelledby="iframeFormModalLabel" aria-hidden="true" {% if static_backdrop %}data-bs-backdrop="static"{% endif %}>
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="iframeFormModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{% trans "Cancel" %}"></button>
+            </div>
+            <div class="modal-body" style="padding-left: 0; padding-right: 0;">
+                <iframe id="iframeFormModalIframe" name="iframeFormModalIframe" frameborder="0" style="width: 100%; {% if iframe_min_height %}min-height: {{ iframe_min_height  }};{% endif %}"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cancel" %}</button>
+                <button id="iframeFormModalSubmit" type="submit" class="btn" onclick="window.frames['iframeFormModalIframe'].document.forms[0].submit();"></button>
+            </div>
+        </div>
+    </div>
+</div>

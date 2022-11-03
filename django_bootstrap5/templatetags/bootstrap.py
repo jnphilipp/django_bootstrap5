@@ -124,8 +124,7 @@ def pagination(
     page: Page,
     base_path: str,
     title: str = None,
-    *args,
-    **kwargs,
+    **kwargs: str,
 ):
     """Pagination template tag."""
     start_page = max(int(page.number) - 4, 0)
@@ -156,7 +155,7 @@ def bootstrap_form(
     method: str = "post",
     type: str = "horizontal",
     csrf: bool = True,
-    **kwargs,
+    **kwargs: str,
 ):
     """From template tag."""
     assert type in ["horizontal", "inline", "vertical"]
@@ -179,8 +178,7 @@ def sortable_th(
     get_value: str,
     colspan: int = 1,
     rowspan: int = 1,
-    *args,
-    **kwargs,
+    **kwargs: str,
 ):
     """Table header cell with sort link template tag."""
     context["column_name"] = column_name
@@ -194,4 +192,17 @@ def sortable_th(
         "link"
     ] = f"?{get_name}={'' if o.startswith('-') else '-'}{get_value}&{params}"
     context["remove_link"] = f"?{get_name}=&{params}"
+    return context
+
+
+@register.inclusion_tag("bootstrap/iframe_form_modal.html", takes_context=True)
+def iframe_form_modal(
+    context: Dict,
+    iframe_min_height: str,
+    static_backdrop: bool = True,
+):
+    """Add modal with an iframe."""
+    context["iframe_min_height"] = iframe_min_height
+    context["static_backdrop"] = static_backdrop
+
     return context
