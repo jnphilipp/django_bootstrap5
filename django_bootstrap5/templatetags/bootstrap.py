@@ -24,7 +24,7 @@ from copy import copy
 from django.core.paginator import Page, Paginator
 from django.forms import Form
 from django.template import Library
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 register = Library()
 
@@ -123,7 +123,7 @@ def pagination(
     paginator: Paginator,
     page: Page,
     base_path: str,
-    title: str = None,
+    title: Optional[str] = None,
     **kwargs: str,
 ):
     """Pagination template tag."""
