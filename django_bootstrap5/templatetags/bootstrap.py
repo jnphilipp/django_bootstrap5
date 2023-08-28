@@ -54,7 +54,7 @@ def _process_field_attributes(field, attr, process):
 @register.filter
 def startswith(value: Any, start: str) -> bool:
     """Startswith template filter."""
-    if type(value) == str:
+    if isinstance(value, str):
         return value.startswith(start)
     else:
         return str(value).startswith(start)
@@ -63,7 +63,7 @@ def startswith(value: Any, start: str) -> bool:
 @register.filter
 def endswith(value: Any, end: str) -> bool:
     """Endswith template filter."""
-    if type(value) == str:
+    if isinstance(value, str):
         return value.endswith(end)
     else:
         return str(value).endswith(end)
@@ -72,7 +72,7 @@ def endswith(value: Any, end: str) -> bool:
 @register.filter
 def substring(value: Any, sub: str) -> bool:
     """Substring template filter."""
-    if type(value) == str:
+    if isinstance(value, str):
         return sub in value
     else:
         return sub in str(value)
