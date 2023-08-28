@@ -30,7 +30,7 @@ def read_file(name):
 
 setup(
     name="django_bootstrap5",
-    version="0.3.6",
+    version="0.3.7",
     description="Add Bootstrap 5 to Django.",
     author="J. Nathanael Philipp",
     author_email="nathanael@philipp.land",
@@ -68,8 +68,7 @@ setup(
         "Operating System :: OS Independent",
         "Framework :: Django",
         "Framework :: Django :: 3.2",
-        "Framework :: Django :: 4.0",
-        "Framework :: Django :: 4.1",
+        "Framework :: Django :: 4.2",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
