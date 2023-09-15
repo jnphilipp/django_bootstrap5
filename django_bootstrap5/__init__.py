@@ -26,6 +26,6 @@ __license__ = "GPLv3+"
 __maintainer__ = __author__
 __email__ = "nathanael@philipp.land"
 __app_name__ = "django_bootstrap5"
-__version_info__ = (0, 3, 8)
+__version_info__ = (0, 3, 9)
 __version__ = ".".join(str(e) for e in __version_info__)
 __github__ = "https://github.com/jnphilipp/django_bootstrap5"

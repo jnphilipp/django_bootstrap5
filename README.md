@@ -5,7 +5,7 @@
 
 ## Included versions
 
-* [Bootstrap](https://github.com/twbs/bootstrap) (bundle): 5.3.1
+* [Bootstrap](https://github.com/twbs/bootstrap) (bundle): 5.3.2
 * [jQuery](https://github.com/jquery/jquery): 3.7.1
 * [jQuery UI](https://github.com/jquery/jquery-ui): 1.13.2
 * [Select2](https://github.com/select2/select2): 4.0.13
