@@ -188,9 +188,9 @@ def sortable_th(
     context["show_options"] = o.endswith(get_value)
 
     params = "&".join([f"{k}={v}" for k, v in kwargs.items() if v])
-    context[
-        "link"
-    ] = f"?{get_name}={'' if o.startswith('-') else '-'}{get_value}&{params}"
+    context["link"] = (
+        f"?{get_name}={'' if o.startswith('-') else '-'}{get_value}&{params}"
+    )
     context["remove_link"] = f"?{get_name}=&{params}"
     return context
 
