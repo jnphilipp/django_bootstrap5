@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# vim: ft=python fileencoding=utf-8 sts=4 sw=4 et:
 # Copyright (C) 2022-2024 J. Nathanael Philipp (jnphilipp) <nathanael@philipp.land>
 #
 # This file is part of django_bootstrap5.
@@ -199,10 +198,12 @@ def sortable_th(
 def iframe_form_modal(
     context: Dict,
     iframe_min_height: Optional[int] = None,
+    iframe_max_height: Optional[int] = None,
     static_backdrop: bool = True,
 ):
     """Add modal with an iframe."""
     context["iframe_min_height"] = iframe_min_height
+    context["iframe_max_height"] = iframe_max_height
     context["static_backdrop"] = static_backdrop
 
     return context

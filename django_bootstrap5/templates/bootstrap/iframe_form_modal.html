@@ -18,7 +18,6 @@
         iframe.addEventListener("load", async (event) => {
             try {
                 while ( true ) {
-                    console.log(iframe.contentWindow.document.body.scrollHeight);
                     if ( iframe.contentWindow.document.body.scrollHeight === 0 ) {
                         await sleep(100);
                     } else {
@@ -40,7 +39,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{% trans "Cancel" %}"></button>
             </div>
             <div class="modal-body" style="padding-left: 0; padding-right: 0;">
-                <iframe id="iframeFormModalIframe" name="iframeFormModalIframe" frameborder="0" style="width: 100%; {% if iframe_min_height %}min-height: {{ iframe_min_height  }};{% endif %}"></iframe>
+                <iframe id="iframeFormModalIframe" name="iframeFormModalIframe" frameborder="0" style="width: 100%; {% if iframe_min_height %}min-height: {{ iframe_min_height  }};{% endif %} {% if iframe_max_height %}max-height: {{ iframe_max_height  }};{% endif %}"></iframe>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cancel" %}</button>

@@ -64,28 +64,28 @@ class BootstrapTestCase(TestCase):
             'esolve, ms));\n        }\n\n        let iframe = document.getElementById("'
             'iframeFormModalIframe");\n        iframe.addEventListener("load", async (e'
             "vent) => {\n            try {\n                while ( true ) {\n         "
-            "if ( iframe.contentWindow.document.body.scrollHeight === 0 ) {\n          "
-            "await sleep(100);\n                    } else {\n                        i"
-            'frame.style.height = iframe.contentWindow.document.body.scrollHeight + "px'
-            '";\n                        break;\n                    }\n               '
-            '}\n            } catch (error) {\n                console.log("Error:", er'
-            "ror);\n            }\n        });\n\n            });\n</s"
-            'cript>\n<div class="modal fade" id="iframeFormModal" tabindex="-1" role="d'
-            'ialog" aria-labelledby="iframeFormModalLabel" aria-hidden="true" data-bs-b'
-            'ackdrop="static">\n    <div class="modal-dialog modal-xl modal-dialog-cent'
-            'ered modal-dialog-scrollable" role="document">\n        <div class="modal-'
-            'content">\n            <div class="modal-header">\n                <h5 cla'
-            'ss="modal-title" id="iframeFormModalLabel"></h5>\n                <button '
-            'type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel'
-            '"></button>\n            </div>\n            <div class="modal-body" style'
-            '="padding-left: 0; padding-right: 0;">\n                <iframe id="iframe'
-            'FormModalIframe" name="iframeFormModalIframe" frameborder="0" style="width'
-            ": 100%;></iframe>\n            </div>\n            <di"
-            'v class="modal-footer">\n                <button type="button" class="btn '
-            'btn-secondary" data-bs-dismiss="modal">Cancel</button>\n                <b'
-            'utton id="iframeFormModalSubmit" type="submit" class="btn" onclick="window'
-            ".frames['iframeFormModalIframe'].document.forms[0].submit();\"></button>"
-            "\n            </div>\n        </div>\n    </div>\n</div>\n",
+            "           if ( iframe.contentWindow.document.body.scrollHeight === 0 ) {"
+            "\n                        await sleep(100);\n                    } else {"
+            "\n                        iframe.style.height = iframe.contentWindow.docum"
+            'ent.body.scrollHeight + "px";\n                        break;\n           '
+            "         }\n                }\n            } catch (error) {\n            "
+            '    console.log("Error:", error);\n            }\n        });\n    });\n</'
+            'script>\n<div class="modal fade" id="iframeFormModal" tabindex="-1" role="'
+            'dialog" aria-labelledby="iframeFormModalLabel" aria-hidden="true" data-bs-'
+            'backdrop="static">\n    <div class="modal-dialog modal-xl modal-dialog-cen'
+            'tered modal-dialog-scrollable" role="document">\n        <div class="modal'
+            '-content">\n            <div class="modal-header">\n                <h5 cl'
+            'ass="modal-title" id="iframeFormModalLabel"></h5>\n                <button'
+            ' type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cance'
+            'l"></button>\n            </div>\n            <div class="modal-body" styl'
+            'e="padding-left: 0; padding-right: 0;">\n                <iframe id="ifram'
+            'eFormModalIframe" name="iframeFormModalIframe" frameborder="0" style="widt'
+            'h: 100%;  "></iframe>\n            </div>\n            <div class="modal-'
+            'footer">\n                <button type="button" class="btn btn-secondary" '
+            'data-bs-dismiss="modal">Cancel</button>\n                <button id="ifram'
+            'eFormModalSubmit" type="submit" class="btn" onclick="window.frames[\'ifram'
+            "eFormModalIframe'].document.forms[0].submit();\"></button>\n            </"
+            "div>\n        </div>\n    </div>\n</div>\n",
         )
         rendered = self.render_template(
             '{% load bootstrap %}{% iframe_form_modal iframe_min_height="500px" %}'
@@ -96,23 +96,33 @@ class BootstrapTestCase(TestCase):
             'meFormModal").modal({\n            show: false\n        });\n        $("#i'
             'frameFormModal").on("show.bs.modal", function(e) {\n            $("#iframe'
             'FormModalLabel").html(e.relatedTarget.title);\n            $("#iframeFormM'
-            'odalIframe").attr("src", e.relatedTarget.href);\n        });\n    });\n</s'
-            'cript>\n<div class="modal fade" id="iframeFormModal" tabindex="-1" role="d'
-            'ialog" aria-labelledby="iframeFormModalLabel" aria-hidden="true" data-bs-b'
-            'ackdrop="static">\n    <div class="modal-dialog modal-xl modal-dialog-cent'
-            'ered modal-dialog-scrollable" role="document">\n        <div class="modal-'
-            'content">\n            <div class="modal-header">\n                <h5 cla'
-            'ss="modal-title" id="iframeFormModalLabel"></h5>\n                <button '
-            'type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel'
-            '"></button>\n            </div>\n            <div class="modal-body" style'
-            '="padding-left: 0; padding-right: 0;">\n                <iframe id="iframe'
-            'FormModalIframe" name="iframeFormModalIframe" frameborder="0" style="width'
-            ': 100%; min-height: 500px;"></iframe>\n            </div>\n            <di'
-            'v class="modal-footer">\n                <button type="button" class="btn '
-            'btn-secondary" data-bs-dismiss="modal">Cancel</button>\n                <b'
-            'utton id="iframeFormModalSubmit" type="submit" class="btn" onclick="window'
-            ".frames['iframeFormModalIframe'].document.forms[0].submit();\"></button>"
-            "\n            </div>\n        </div>\n    </div>\n</div>\n",
+            'odalIframe").attr("src", e.relatedTarget.href);\n        });\n\n        fu'
+            "nction sleep(ms) {\n            return new Promise(resolve => setTimeout(r"
+            'esolve, ms));\n        }\n\n        let iframe = document.getElementById("'
+            'iframeFormModalIframe");\n        iframe.addEventListener("load", async (e'
+            "vent) => {\n            try {\n                while ( true ) {\n         "
+            "           if ( iframe.contentWindow.document.body.scrollHeight === 0 ) {"
+            "\n                        await sleep(100);\n                    } else {"
+            "\n                        iframe.style.height = iframe.contentWindow.docum"
+            'ent.body.scrollHeight + "px";\n                        break;\n           '
+            "         }\n                }\n            } catch (error) {\n            "
+            '    console.log("Error:", error);\n            }\n        });\n    });\n</'
+            'script>\n<div class="modal fade" id="iframeFormModal" tabindex="-1" role="'
+            'dialog" aria-labelledby="iframeFormModalLabel" aria-hidden="true" data-bs-'
+            'backdrop="static">\n    <div class="modal-dialog modal-xl modal-dialog-cen'
+            'tered modal-dialog-scrollable" role="document">\n        <div class="modal'
+            '-content">\n            <div class="modal-header">\n                <h5 cl'
+            'ass="modal-title" id="iframeFormModalLabel"></h5>\n                <button'
+            ' type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cance'
+            'l"></button>\n            </div>\n            <div class="modal-body" styl'
+            'e="padding-left: 0; padding-right: 0;">\n                <iframe id="ifram'
+            'eFormModalIframe" name="iframeFormModalIframe" frameborder="0" style="widt'
+            'h: 100%; min-height: 500px; "></iframe>\n            </div>\n            <'
+            'div class="modal-footer">\n                <button type="button" class="bt'
+            'n btn-secondary" data-bs-dismiss="modal">Cancel</button>\n                '
+            '<button id="iframeFormModalSubmit" type="submit" class="btn" onclick="wind'
+            "ow.frames['iframeFormModalIframe'].document.forms[0].submit();\"></button"
+            ">\n            </div>\n        </div>\n    </div>\n</div>\n",
         )
         rendered = self.render_template(
             '{% load bootstrap %}{% iframe_form_modal iframe_min_height="400px" '
@@ -124,22 +134,32 @@ class BootstrapTestCase(TestCase):
             'meFormModal").modal({\n            show: false\n        });\n        $("#i'
             'frameFormModal").on("show.bs.modal", function(e) {\n            $("#iframe'
             'FormModalLabel").html(e.relatedTarget.title);\n            $("#iframeFormM'
-            'odalIframe").attr("src", e.relatedTarget.href);\n        });\n    });\n</s'
-            'cript>\n<div class="modal fade" id="iframeFormModal" tabindex="-1" role="d'
-            'ialog" aria-labelledby="iframeFormModalLabel" aria-hidden="true" data-bs-b'
-            'ackdrop="static">\n    <div class="modal-dialog modal-xl modal-dialog-cent'
-            'ered modal-dialog-scrollable" role="document">\n        <div class="modal-'
-            'content">\n            <div class="modal-header">\n                <h5 cla'
-            'ss="modal-title" id="iframeFormModalLabel"></h5>\n                <button '
-            'type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel'
-            '"></button>\n            </div>\n            <div class="modal-body" style'
-            '="padding-left: 0; padding-right: 0;">\n                <iframe id="iframe'
-            'FormModalIframe" name="iframeFormModalIframe" frameborder="0" style="width'
-            ': 100%; min-height: 400px; max-height: 500px;"></iframe>\n            '
-            '</div>\n            <div class="modal-footer">\n                <button '
-            'type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel'
-            '</button>\n                <button id="iframeFormModalSubmit" type="submit'
-            '" class="btn" onclick="window.frames[\'iframeFormModalIframe\'].document.'
-            'forms[0].submit();"></button>\n            </div>\n        </div>\n    '
-            "</div>\n</div>\n",
+            'odalIframe").attr("src", e.relatedTarget.href);\n        });\n\n        fu'
+            "nction sleep(ms) {\n            return new Promise(resolve => setTimeout(r"
+            'esolve, ms));\n        }\n\n        let iframe = document.getElementById("'
+            'iframeFormModalIframe");\n        iframe.addEventListener("load", async (e'
+            "vent) => {\n            try {\n                while ( true ) {\n         "
+            "           if ( iframe.contentWindow.document.body.scrollHeight === 0 ) {"
+            "\n                        await sleep(100);\n                    } else {"
+            "\n                        iframe.style.height = iframe.contentWindow.docum"
+            'ent.body.scrollHeight + "px";\n                        break;\n           '
+            "         }\n                }\n            } catch (error) {\n            "
+            '    console.log("Error:", error);\n            }\n        });\n    });\n</'
+            'script>\n<div class="modal fade" id="iframeFormModal" tabindex="-1" role="'
+            'dialog" aria-labelledby="iframeFormModalLabel" aria-hidden="true" data-bs-'
+            'backdrop="static">\n    <div class="modal-dialog modal-xl modal-dialog-cen'
+            'tered modal-dialog-scrollable" role="document">\n        <div class="modal'
+            '-content">\n            <div class="modal-header">\n                <h5 cl'
+            'ass="modal-title" id="iframeFormModalLabel"></h5>\n                <button'
+            ' type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cance'
+            'l"></button>\n            </div>\n            <div class="modal-body" styl'
+            'e="padding-left: 0; padding-right: 0;">\n                <iframe id="ifram'
+            'eFormModalIframe" name="iframeFormModalIframe" frameborder="0" style="widt'
+            'h: 100%; min-height: 400px; max-height: 800px;"></iframe>\n            </d'
+            'iv>\n            <div class="modal-footer">\n                <button type='
+            '"button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>'
+            '\n                <button id="iframeFormModalSubmit" type="submit" class="'
+            "btn\" onclick=\"window.frames['iframeFormModalIframe'].document.forms[0].s"
+            'ubmit();"></button>\n            </div>\n        </div>\n    </div>\n</div'
+            ">\n",
         )
