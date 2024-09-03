@@ -64,7 +64,6 @@ class BootstrapTestCase(TestCase):
             'esolve, ms));\n        }\n\n        let iframe = document.getElementById("'
             'iframeFormModalIframe");\n        iframe.addEventListener("load", async (e'
             "vent) => {\n            try {\n                while ( true ) {\n         "
-            "console.log(iframe.contentWindow.document.body.scrollHeight);\n           "
             "if ( iframe.contentWindow.document.body.scrollHeight === 0 ) {\n          "
             "await sleep(100);\n                    } else {\n                        i"
             'frame.style.height = iframe.contentWindow.document.body.scrollHeight + "px'
