@@ -28,8 +28,9 @@ Load with `{% load bootstrap %}` and include CSS/JS with:
 
 Simple modal with an iFrame, designed for usage with forms.
 
-Add modal with `{% iframe_form_modal iframe_min_height="500px" %}`, with options:
+Add modal with `{% iframe_form_modal %}`, with options:
 * **iframe_min_height**: `iframe_min_height="500px"` set minimum height of iframe
+* **iframe_max_height**: `iframe_max_height="500px"` set maximum height of iframe
 * **static_backdrop**: `static_backdrop=False` static backdrop of the model, defaults to `True`
 
 Open link with:
