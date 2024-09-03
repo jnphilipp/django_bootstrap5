@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # vim: ft=python fileencoding=utf-8 sts=4 sw=4 et:
-# Copyright (C) 2022 J. Nathanael Philipp (jnphilipp) <nathanael@philipp.land>
+# Copyright (C) 2022-2024 J. Nathanael Philipp (jnphilipp) <nathanael@philipp.land>
 #
 # This file is part of django_bootstrap5.
 #
@@ -198,7 +198,7 @@ def sortable_th(
 @register.inclusion_tag("bootstrap/iframe_form_modal.html", takes_context=True)
 def iframe_form_modal(
     context: Dict,
-    iframe_min_height: str,
+    iframe_min_height: int | None = None,
     static_backdrop: bool = True,
 ):
     """Add modal with an iframe."""

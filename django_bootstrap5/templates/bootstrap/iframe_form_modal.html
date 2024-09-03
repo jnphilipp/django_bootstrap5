@@ -9,6 +9,27 @@
             $("#iframeFormModalLabel").html(e.relatedTarget.title);
             $("#iframeFormModalIframe").attr("src", e.relatedTarget.href);
         });
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        let iframe = document.getElementById("iframeFormModalIframe");
+        iframe.addEventListener("load", async (event) => {
+            try {
+                while ( true ) {
+                    console.log(iframe.contentWindow.document.body.scrollHeight);
+                    if ( iframe.contentWindow.document.body.scrollHeight === 0 ) {
+                        await sleep(100);
+                    } else {
+                        iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+                        break;
+                    }
+                }
+            } catch (error) {
+                console.log("Error:", error);
+            }
+        });
     });
 </script>
 <div class="modal fade" id="iframeFormModal" tabindex="-1" role="dialog" aria-labelledby="iframeFormModalLabel" aria-hidden="true" {% if static_backdrop %}data-bs-backdrop="static"{% endif %}>
