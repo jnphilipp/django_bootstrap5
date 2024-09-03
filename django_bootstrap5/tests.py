@@ -59,7 +59,18 @@ class BootstrapTestCase(TestCase):
             'meFormModal").modal({\n            show: false\n        });\n        $("#i'
             'frameFormModal").on("show.bs.modal", function(e) {\n            $("#iframe'
             'FormModalLabel").html(e.relatedTarget.title);\n            $("#iframeFormM'
-            'odalIframe").attr("src", e.relatedTarget.href);\n        });\n    });\n</s'
+            'odalIframe").attr("src", e.relatedTarget.href);\n        });\n\n        fu'
+            "nction sleep(ms) {\n            return new Promise(resolve => setTimeout(r"
+            'esolve, ms));\n        }\n\n        let iframe = document.getElementById("'
+            'iframeFormModalIframe");\n        iframe.addEventListener("load", async (e'
+            "vent) => {\n            try {\n                while ( true ) {\n         "
+            "console.log(iframe.contentWindow.document.body.scrollHeight);\n           "
+            "if ( iframe.contentWindow.document.body.scrollHeight === 0 ) {\n          "
+            "await sleep(100);\n                    } else {\n                        i"
+            'frame.style.height = iframe.contentWindow.document.body.scrollHeight + "px'
+            '";\n                        break;\n                    }\n               '
+            '}\n            } catch (error) {\n                console.log("Error:", er'
+            "ror);\n            }\n        });\n\n            });\n</s"
             'cript>\n<div class="modal fade" id="iframeFormModal" tabindex="-1" role="d'
             'ialog" aria-labelledby="iframeFormModalLabel" aria-hidden="true" data-bs-b'
             'ackdrop="static">\n    <div class="modal-dialog modal-xl modal-dialog-cent'

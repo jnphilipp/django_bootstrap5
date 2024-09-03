@@ -198,7 +198,7 @@ def sortable_th(
 @register.inclusion_tag("bootstrap/iframe_form_modal.html", takes_context=True)
 def iframe_form_modal(
     context: Dict,
-    iframe_min_height: int | None = None,
+    iframe_min_height: Optional[int] = None,
     static_backdrop: bool = True,
 ):
     """Add modal with an iframe."""
