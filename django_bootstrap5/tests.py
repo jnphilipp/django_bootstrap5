@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-# vim: ft=python fileencoding=utf-8 sts=4 sw=4 et:
-# Copyright (C) 2022 J. Nathanael Philipp (jnphilipp) <nathanael@philipp.land>
+# Copyright (C) 2022-2024 J. Nathanael Philipp (jnphilipp) <nathanael@philipp.land>
 #
 # This file is part of django_bootstrap5.
 #
@@ -53,6 +52,31 @@ class BootstrapTestCase(TestCase):
         )
 
     def test_iframeformmodal(self):
+        rendered = self.render_template("{% load bootstrap %}{% iframe_form_modal %}")
+        self.assertEqual(
+            rendered,
+            '\n\n<script type="text/javascript">\n    $(function() {\n        $("a.ifra'
+            'meFormModal").modal({\n            show: false\n        });\n        $("#i'
+            'frameFormModal").on("show.bs.modal", function(e) {\n            $("#iframe'
+            'FormModalLabel").html(e.relatedTarget.title);\n            $("#iframeFormM'
+            'odalIframe").attr("src", e.relatedTarget.href);\n        });\n    });\n</s'
+            'cript>\n<div class="modal fade" id="iframeFormModal" tabindex="-1" role="d'
+            'ialog" aria-labelledby="iframeFormModalLabel" aria-hidden="true" data-bs-b'
+            'ackdrop="static">\n    <div class="modal-dialog modal-xl modal-dialog-cent'
+            'ered modal-dialog-scrollable" role="document">\n        <div class="modal-'
+            'content">\n            <div class="modal-header">\n                <h5 cla'
+            'ss="modal-title" id="iframeFormModalLabel"></h5>\n                <button '
+            'type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel'
+            '"></button>\n            </div>\n            <div class="modal-body" style'
+            '="padding-left: 0; padding-right: 0;">\n                <iframe id="iframe'
+            'FormModalIframe" name="iframeFormModalIframe" frameborder="0" style="width'
+            ": 100%;></iframe>\n            </div>\n            <di"
+            'v class="modal-footer">\n                <button type="button" class="btn '
+            'btn-secondary" data-bs-dismiss="modal">Cancel</button>\n                <b'
+            'utton id="iframeFormModalSubmit" type="submit" class="btn" onclick="window'
+            ".frames['iframeFormModalIframe'].document.forms[0].submit();\"></button>"
+            "\n            </div>\n        </div>\n    </div>\n</div>\n",
+        )
         rendered = self.render_template(
             '{% load bootstrap %}{% iframe_form_modal iframe_min_height="500px" %}'
         )
@@ -79,4 +103,33 @@ class BootstrapTestCase(TestCase):
             'utton id="iframeFormModalSubmit" type="submit" class="btn" onclick="window'
             ".frames['iframeFormModalIframe'].document.forms[0].submit();\"></button>"
             "\n            </div>\n        </div>\n    </div>\n</div>\n",
+        )
+        rendered = self.render_template(
+            '{% load bootstrap %}{% iframe_form_modal iframe_min_height="400px" '
+            + 'iframe_max_height="800px" %}'
+        )
+        self.assertEqual(
+            rendered,
+            '\n\n<script type="text/javascript">\n    $(function() {\n        $("a.ifra'
+            'meFormModal").modal({\n            show: false\n        });\n        $("#i'
+            'frameFormModal").on("show.bs.modal", function(e) {\n            $("#iframe'
+            'FormModalLabel").html(e.relatedTarget.title);\n            $("#iframeFormM'
+            'odalIframe").attr("src", e.relatedTarget.href);\n        });\n    });\n</s'
+            'cript>\n<div class="modal fade" id="iframeFormModal" tabindex="-1" role="d'
+            'ialog" aria-labelledby="iframeFormModalLabel" aria-hidden="true" data-bs-b'
+            'ackdrop="static">\n    <div class="modal-dialog modal-xl modal-dialog-cent'
+            'ered modal-dialog-scrollable" role="document">\n        <div class="modal-'
+            'content">\n            <div class="modal-header">\n                <h5 cla'
+            'ss="modal-title" id="iframeFormModalLabel"></h5>\n                <button '
+            'type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel'
+            '"></button>\n            </div>\n            <div class="modal-body" style'
+            '="padding-left: 0; padding-right: 0;">\n                <iframe id="iframe'
+            'FormModalIframe" name="iframeFormModalIframe" frameborder="0" style="width'
+            ': 100%; min-height: 400px; max-height: 500px;"></iframe>\n            '
+            '</div>\n            <div class="modal-footer">\n                <button '
+            'type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel'
+            '</button>\n                <button id="iframeFormModalSubmit" type="submit'
+            '" class="btn" onclick="window.frames[\'iframeFormModalIframe\'].document.'
+            'forms[0].submit();"></button>\n            </div>\n        </div>\n    '
+            "</div>\n</div>\n",
         )
