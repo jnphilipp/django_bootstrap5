@@ -7,7 +7,7 @@
 
 * [Bootstrap](https://github.com/twbs/bootstrap) (bundle): 5.3.3
 * [jQuery](https://github.com/jquery/jquery): 3.7.1
-* [jQuery UI](https://github.com/jquery/jquery-ui): 1.14.0
+* [jQuery UI](https://github.com/jquery/jquery-ui): 1.14.1
 * [Select2](https://github.com/select2/select2): 4.0.13
 
 
