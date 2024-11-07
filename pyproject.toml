@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "django_bootstrap5"
-version = "0.3.13"
+version = "0.3.14"
 authors = [
     {name = "J. Nathanael Philipp", email = "nathanael@philipp.land"}
 ]
@@ -38,7 +38,10 @@ keywords = ["django", "bootstrap", "bootstrap 5"]
 "Bug Tracker" = "http://github.com/jnphilipp/django_bootstrap5/issues"
 
 [tool.setuptools]
-packages = ["django_bootstrap5"]
+packages = [
+    "django_bootstrap5",
+    "django_bootstrap5.templatetags",
+]
 
 [tool.setuptools.package-data]
 django_bootstrap5 = [
