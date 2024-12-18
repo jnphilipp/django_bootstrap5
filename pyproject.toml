@@ -45,7 +45,7 @@ packages = [
 
 [tool.setuptools.package-data]
 django_bootstrap5 = [
-    "../py.typed",
+    "py.typed",
     "static/*",
     "static/css/*",
     "static/css/images/*",
