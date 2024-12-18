@@ -40,6 +40,13 @@ keywords = ["django", "bootstrap", "bootstrap 5"]
 [tool.setuptools]
 packages = [
     "django_bootstrap5",
+    "django_bootstrap5.static",
+    "django_bootstrap5.static.css",
+    "django_bootstrap5.static.css.images",
+    "django_bootstrap5.static.js",
+    "django_bootstrap5.static.js.i18n",
+    "django_bootstrap5.templates.bootstrap",
+    "django_bootstrap5.templates.bootstrap.form",
     "django_bootstrap5.templatetags",
 ]
 

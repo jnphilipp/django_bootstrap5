@@ -19,13 +19,13 @@ print-%:
 
 clean:
 	$(Q)rm -rf ./build
+	$(Q)rm -rf ./dist
 	$(Q)rm -rf ./django_bootstrap5.egg-info
 	$(Q)find django_bootstrap5 -depth -name __pycache__ -exec rm -rf {} \;
 
 
 install: build/copyright build/changelog.Debian.gz
-	$(Q)python setup.py build
-	$(Q)python setup.py install --root="${DEST_DIR}/" --optimize=1 --skip-build
+	$(Q)python -m installer --destdir="${DEST_DIR}" dist/*.whl
 
 	$(Q)install -Dm 0644 build/changelog.Debian.gz "${DEST_DIR}${DOC_DIR}"/python-django-bootstrap5/changelog.Debian.gz
 	$(Q)install -Dm 0644 build/copyright "${DEST_DIR}${DOC_DIR}"/python-django-bootstrap5/copyright
@@ -43,6 +43,7 @@ uninstall:
 
 build:
 	$(Q)mkdir -p build
+	$(Q)python -m build --wheel --no-isolation
 
 
 build/copyright: build
@@ -50,7 +51,7 @@ build/copyright: build
 	$(Q)echo "Source: https://github.com/jnphilipp/django_bootstrap5" >> build/copyright
 	$(Q)echo "" >> build/copyright
 	$(Q)echo "Files: *" >> build/copyright
-	$(Q)echo "Copyright: 2014-2022 J. Nathanael Philipp (jnphilipp) <nathanael@philipp.land>" >> build/copyright
+	$(Q)echo "Copyright: 2014-2024 J. Nathanael Philipp (jnphilipp) <nathanael@philipp.land>" >> build/copyright
 	$(Q)echo "License: GPL-3+" >> build/copyright
 	$(Q)echo " This program is free software: you can redistribute it and/or modify" >> build/copyright
 	$(Q)echo " it under the terms of the GNU General Public License as published by" >> build/copyright
